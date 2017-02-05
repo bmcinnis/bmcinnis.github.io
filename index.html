@@ -13,13 +13,21 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		var backgrounds = [{'file':'IMG_20161229_194641_181.jpg'},{'file':'IMG_20170114_155410_472.jpg'},{'file':'IMG_20170115_163703_011.jpg'},{'file':'IMG_20170116_055754.jpg'},{'file':'IMG_20170117_122729_696.jpg'}];
+		/* Variables */
+		var backgrounds = [{'file':'IMG_20161229_194641_181.jpg'},
+					{'file':'IMG_20170114_155410_472.jpg'},
+					{'file':'IMG_20170115_163703_011.jpg'},
+					{'file':'IMG_20170116_055754.jpg'},
+					{'file':'IMG_20170117_122729_696.jpg'}];
 		var locate = "https://s3-us-west-2.amazonaws.com/www.bmcinnis.org/";
 
-		var selected_background = _.sample(backgrounds);
-		var locate_string = locate.concat(selected_background['file']);
-		console.log(locate_string);
-		$(".backdrop[type='image']").css({"background-image":locate_string,"width":"100%"});
+		$(document).ready(function(){
+
+			var selected_background = _.sample(backgrounds);
+			var locate_string = locate.concat(selected_background['file']);
+			console.log(locate_string);
+			$(".backdrop[type='image']").css({"background-image":locate_string,"width":"100%"});
+		});
 	</script>
 	<body>
 		<div class='backdrop' type='image'></div>
