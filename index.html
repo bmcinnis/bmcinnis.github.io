@@ -26,7 +26,7 @@
 			var selected_background = _.sample(backgrounds);
 			var locate_string = locate.concat(selected_background['file']);
 			console.log(locate_string);
-			$(".backdrop[type='image']").css({"src":locate_string});
+			$(".backdrop[type='image']").attr({"src":locate_string});
 		});
 	</script>
 	<body>
