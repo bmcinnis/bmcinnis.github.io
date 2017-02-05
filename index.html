@@ -17,8 +17,7 @@
 		var locate = "https://s3-us-west-2.amazonaws.com/www.bmcinnis.org/";
 
 		var selected_background = _.sample(backgrounds);
-		var locate_string = "";
-		locate_string = locate_string.concat(locate,selected_background['file']);
+		var locate_string = locate.concat(selected_background['file']);
 		console.log(locate_string);
 		$(".backdrop[type='image']").css("background-image", locate_string);
 	</script>
