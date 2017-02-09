@@ -20,7 +20,8 @@
 			console.log(svgSize);
 			var lineData = _.map(_.range(0.05,1,0.05),
 						function(num){
-							return {'x':num*svgSize['width'],'y':_.random(-250,250)+(svgSize['height']/2)};
+							return {'x':num*svgSize['width'],
+								'y':_.random(-1*(svgSize['height']*0.25),svgSize['height']*0.25)+(svgSize['height']/2)};
 						});
 			lineData.unshift({'x':0*svgSize['width'],'y':0.5*svgSize['height']});
 			lineData.push({'x':1*svgSize['width'],'y':0.5*svgSize['height']});
