@@ -18,12 +18,12 @@
 
 			var svgSize = {'height':$('.whiteboard').height(), 'width':$('.whiteboard').width()}
 			console.log(svgSize);
-			var lineData = _.map(_.range(0.05,1,0.05),
+			var lineData = _.map(_.range(0,1,0.07),
 						function(num){
 							return {'x':num*svgSize['width'],
 								'y':_.random(-1*(svgSize['height']*0.25),svgSize['height']*0.25)+(svgSize['height']/2)};
 						});
-			lineData.unshift({'x':0*svgSize['width'],'y':0.5*svgSize['height']});
+			lineData.unshift({'x':-0.05*svgSize['width'],'y':0.5*svgSize['height']});
 			lineData.push({'x':1*svgSize['width'],'y':0.5*svgSize['height']});
 
 			
@@ -35,12 +35,35 @@
 						.curve(d3.curveBasis);
 
 			var svgContainer = d3.select(".whiteboard");
-
-			var lineGraph = svgContainer.append("path")
-						.attr("d", lineFunction(lineData))
-						.attr("stroke", "blue")
-						.attr("stroke-width",2)
-						.attr("fill","none");
+			var colorSet = ["#e6f5ff",
+					"#ccebff",
+					"#b3e0ff",
+					"#99d6ff",
+					"#80ccff",
+					"#66c2ff",
+					"#4db8ff",
+					"#33adff",
+					"#1aa3ff",
+					"#0099ff",
+					"#1aa3ff",
+					"#33adff",
+					"#4db8ff",
+					"#66c2ff",
+					"#80ccff",
+					"#99d6ff",
+					"#b3e0ff",
+					"#ccebff",
+					"#e6f5ff",
+					"#ffffff"];
+			for (var ii in _.range(colorSet.length*-1,colorSet.length , 4)){
+				var cs = colorSet.shift();
+				svgContainer.append("path")
+							.attr("d", lineFunction(lineData))
+							.attr("stroke", cs)
+							.attr("stroke-width",1)
+							.attr("fill","none")
+							.attr("transform","translate("+ii*3+","+ii*5+")");
+			}
 
 			
 		});
