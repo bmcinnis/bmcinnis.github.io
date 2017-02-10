@@ -18,13 +18,11 @@
 
 			var svgSize = {'height':$('.whiteboard').height(), 'width':$('.whiteboard').width()}
 			console.log(svgSize);
-			var lineData = _.map(_.range(0,1,0.07),
+			var lineData = _.map(_.range(0.1, 0.9, 0.15),
 						function(num){
 							return {'x':num*svgSize['width'],
 								'y':_.random(-1*(svgSize['height']*0.25),svgSize['height']*0.25)+(svgSize['height']/2)};
 						});
-			lineData.unshift({'x':-0.05*svgSize['width'],'y':0.5*svgSize['height']});
-			lineData.push({'x':1*svgSize['width'],'y':0.5*svgSize['height']});
 
 			
 			console.log(lineData);
@@ -55,14 +53,25 @@
 					"#ccebff",
 					"#e6f5ff",
 					"#ffffff"];
-			for (var ii in _.range(colorSet.length*-1,colorSet.length , 4)){
+
+			for (var ii in _.range(-1*(colorSet.length), colorSet.length , 2)){
 				var cs = colorSet.shift();
+				var line = lineData.slice();
+
+				var line = _.map(line, function(item){
+					item['x'] += Math.abs(ii)*2;
+					item['y'] += Math.abs(ii);
+					return item;
+				});				
+
+				line.unshift({'x':0,'y':((ii/colorSet.length)*(svgSize["height"]/2))});
+				line.push({'x':svgSize['width'],'y':((1-(ii/colorSet.length))*(svgSize["height"]))});
+
 				svgContainer.append("path")
-							.attr("d", lineFunction(lineData))
+							.attr("d", lineFunction(line))
 							.attr("stroke", cs)
 							.attr("stroke-width",1)
-							.attr("fill","none")
-							.attr("transform","translate("+ii*3+","+ii*5+")");
+							.attr("fill","none");
 			}
 
 			
