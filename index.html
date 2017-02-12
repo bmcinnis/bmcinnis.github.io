@@ -14,16 +14,30 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-		$(document).ready(function(){
-
+		var wavey = function(color){
+			var colorSet = {'green':["#e6fff2","#ccffe6","#b3ffd9","#99ffcc","#80ffbf","#66ffb3","#4dffa6","#33ff99",
+						"#1aff8c","#00ff80","#00e673","#00cc66","#00b359","#00cc66","#00e673","#00ff80",
+						"#1aff8c","#33ff99","#4dffa6","#66ffb3","#80ffbf","#99ffcc","#b3ffd9","#ccffe6","#e6fff2"],
+					'blue':["#e6f5ff","#ccebff","#b3e0ff","#99d6ff","#80ccff","#66c2ff","#4db8ff","#33adff","#1aa3ff",
+						"#0099ff","#1aa3ff","#33adff","#4db8ff","#66c2ff","#80ccff","#99d6ff","#b3e0ff",
+						"#ccebff","#e6f5ff","#ffffff"],
+					'red':["#ffe6f2","#ffcce6","#ffb3d9","#ff99cc","#ff80bf","#ff66b3","#ff4da6","#ff3399","#ff1a8c","#ff0080","#e60073",
+						"#cc0066","#ff0000","#ff1a1a","#ff3333","#ff4d4d","#ff6666","#ff8080","#ff9999","#ffb3b3","#ffcccc","#ffe6e6"]};
+			
+			$('.whiteboard').empty();
 			var svgSize = {'height':$('.whiteboard').height(), 'width':$('.whiteboard').width()}
 			console.log(svgSize);
-			var lineData = _.map(_.range(0.1, 0.9, 0.15),
+
+			/*
+			var lineData = _.map(_.range(0.05, 0.9, 0.15),
 						function(num){
 							return {'x':num*svgSize['width'],
 								'y':_.random(-1*(svgSize['height']*0.25),svgSize['height']*0.25)+(svgSize['height']/2)};
 						});
-
+			*/
+			var lineData = [{'x':0.30*svgSize['width'],'y':(svgSize['height'])*_.random(0.1,0.5)},
+					{'x':0.50*svgSize['width'],'y':(svgSize['height'])*_.random(0.1,0.25)},
+					{'x':0.70*svgSize['width'],'y':(svgSize['height'])*_.random(0.1,0.5)}]
 			
 			console.log(lineData);
 
@@ -33,39 +47,19 @@
 						.curve(d3.curveBasis);
 
 			var svgContainer = d3.select(".whiteboard");
-			var colorSet = ["#e6f5ff",
-					"#ccebff",
-					"#b3e0ff",
-					"#99d6ff",
-					"#80ccff",
-					"#66c2ff",
-					"#4db8ff",
-					"#33adff",
-					"#1aa3ff",
-					"#0099ff",
-					"#1aa3ff",
-					"#33adff",
-					"#4db8ff",
-					"#66c2ff",
-					"#80ccff",
-					"#99d6ff",
-					"#b3e0ff",
-					"#ccebff",
-					"#e6f5ff",
-					"#ffffff"];
 
-			for (var ii in _.range(-1*(colorSet.length), colorSet.length , 2)){
-				var cs = colorSet.shift();
+			var colors = colorSet[color];
+			for (var ii in _.range(-1*(colors.length), colors.length , 2)){
+				var cs = colors.shift();
 				var line = lineData.slice();
 
 				var line = _.map(line, function(item){
-					item['x'] += Math.abs(ii)*2;
-					item['y'] += Math.abs(ii);
+					item['x'] += Math.abs(ii)*0.5;
 					return item;
 				});				
 
-				line.unshift({'x':0,'y':((ii/colorSet.length)*(svgSize["height"]/2))});
-				line.push({'x':svgSize['width'],'y':((1-(ii/colorSet.length))*(svgSize["height"]))});
+				line.unshift({'x':0,'y':((ii/colors.length)*(svgSize["height"]/2))});
+				line.push({'x':svgSize['width'],'y':(svgSize["height"]/2)-(ii*25)});
 
 				svgContainer.append("path")
 							.attr("d", lineFunction(line))
@@ -74,7 +68,15 @@
 							.attr("fill","none");
 			}
 
-			
+		};
+
+		$(document).ready(function(){
+			var color = _.sample(['green','blue','red'],1);
+			wavey(color);
+		});
+		$(window).resize(function(){
+			var color = _.sample(['red','blue','green'],1);
+			wavey(color);
 		});
 	</script>
 	<body>
