@@ -98,15 +98,15 @@
 				/* 	Toggling speech recognition */
 				$('.volume').on('click',function(){
 					if($('.volume span').hasClass('glyphicon-volume-up')){
-						$('.volume span').addClass('glyphicon-volume-off');
-						$('.volume span').removeClass('glyphicon-volume-up')	
-						$('.volume').addClass('btn-danger');
-						$('.volume').removeClass('btn-primary');
-					}else{
 						$('.volume span').removeClass('glyphicon-volume-off');
-						$('.volume span').addClass('glyphicon-volume-up');
+						$('.volume span').addClass('glyphicon-volume-up')	
 						$('.volume').removeClass('btn-danger');
 						$('.volume').addClass('btn-primary');
+					}else{
+						$('.volume span').addClass('glyphicon-volume-off');
+						$('.volume span').removeClass('glyphicon-volume-up');
+						$('.volume').addClass('btn-danger');
+						$('.volume').removeClass('btn-primary');
 						recognition.start();
 						console.log('Give me some happy words!');
 					}
@@ -125,10 +125,10 @@
 
 				recognition.onspeechend = function() {
 	  				recognition.stop();
-					$('.volume span').addClass('glyphicon-volume-off');
-					$('.volume span').removeClass('glyphicon-volume-up')	
-					$('.volume').addClass('btn-danger');
-					$('.volume').removeClass('btn-primary');
+					$('.volume span').removeClass('glyphicon-volume-off');
+					$('.volume span').addClass('glyphicon-volume-up')	
+					$('.volume').removeClass('btn-danger');
+					$('.volume').addClass('btn-primary');
 				}
 
 				recognition.onnomatch = function(event) {
@@ -149,8 +149,8 @@
 	<body>
 		<svg class="whiteboard" height="100%" width="100%"></svg>
 		<div class="speaker"><h3></h3></div>
-		<button type="button" class="btn btn-danger btn-small volume" aria-label="Left Align">
-			<span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span>
+		<button type="button" class="btn btn-primary btn-small volume" aria-label="Left Align">
+			<span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
 		</button>
 	</body>
 	<style>
