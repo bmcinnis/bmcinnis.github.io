@@ -118,7 +118,15 @@
 					console.log('Confidence: ' + event.results[0][0].confidence);
 				}
 
+				recognition.onspeechend = function() {
+	  				recognition.stop();
+				}
 
+				recognition.onnomatch = function(event) {
+ 					diagnostic.textContent = 'Must have been a sad word, sorry didnt recognize it!';
+				}
+
+				
 			}else{
 				$('.volume').remove();
 			}
