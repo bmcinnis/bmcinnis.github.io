@@ -120,10 +120,14 @@
 
 				recognition.onspeechend = function() {
 	  				recognition.stop();
+					$('.volume span').addClass('glyphicon-volume-off');
+					$('.volume span').removeClass('glyphicon-volume-up')	
+					$('.volume').addClass('btn-danger');
+					$('.volume').removeClass('btn-primary');
 				}
 
 				recognition.onnomatch = function(event) {
- 					diagnostic.textContent = 'Must have been a sad word, sorry didnt recognize it!';
+ 					console.log('Must have been a sad word, sorry didnt recognize it!');
 				}
 
 				
