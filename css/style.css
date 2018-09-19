@@ -5,3 +5,10 @@ body {
 #me {
    float: right;
 }
+.name {
+    margin: 0 0 5px 0;
+    padding: 0 0 0 5px;
+    font-size: 40px;
+    font-weight: 300;
+    font-variant: 'small-caps';
+}
