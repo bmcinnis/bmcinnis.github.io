@@ -5,7 +5,7 @@ body {
    height:100%;
    padding:10px;
    padding-bottom:60px;   /* Height of the footer */
-   font-family: 'EB Garamond', serif;
+   font-family: 'Noto Serif JP', sans-serif;
 }
 .container {
    min-height:100%;
@@ -17,7 +17,6 @@ body {
 header {
    background:#ff0;
    padding:10px;
-   font-family: 'Cormorant Garamond', serif;
 }
 footer {
    position:absolute;
@@ -25,5 +24,4 @@ footer {
    width:100%;
    height:60px;   /* Height of the footer */
    background:#6cf;
-   font-family: 'Cormorant Garamond', serif;
 }
