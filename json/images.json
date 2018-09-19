@@ -1,0 +1,20 @@
+[
+	{
+		"src": "libeslope.sunset.001.jpg",
+		"title": "Libe Slope, Cornell University",
+		"description":  "A favorite way to end my day, is with a stroll across campus just after sunset.",
+		"date": "2018-08-10"
+	},
+	{
+		"src": "taughannock.sunset.002.jpg",
+		"title": "Taughannock Falls, New York State Park",
+		"description":  "Recommended hike: Connect the North and South Rim trails to loop the park.",
+		"date": "2018-08-11"
+	},
+	{
+		"src": "watkins.dusk.003.jpg",
+		"title": "Watkins Glen, New York State Park",
+		"description":  "Recommended hike: The Gorge Trail leads you through several waterfalls, take Lovers Lane on your way back.",
+		"date": "2018-08-11"
+	}	
+]
