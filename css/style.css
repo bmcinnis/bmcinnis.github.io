@@ -1,27 +1,7 @@
 html,
 body {
-   margin:0;
-   padding:0;
-   height:100%;
-   padding:10px;
-   padding-bottom:60px;   /* Height of the footer */
    font-family: 'Noto Serif JP', sans-serif;
-}
-.container {
-   min-height:100%;
-   position:relative;
 }
 #me {
    float: right;
-}
-header {
-   background:#ff0;
-   padding:10px;
-}
-footer {
-   position:absolute;
-   bottom:0;
-   width:100%;
-   height:60px;   /* Height of the footer */
-   background:#6cf;
 }
