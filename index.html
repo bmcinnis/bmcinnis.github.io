@@ -23,6 +23,21 @@
             html, body, .container {
 	        font-family: 'Noto Serif JP', sans-serif;
 	    }
+	    #mail {
+	        color: black;
+                text-decoration: none;
+	        background: rgb(255,255,255);
+	        -webkit-transition: color 2s background 1s; /* Safari */
+                transition: color 1s background 0.5s;
+	    }
+	    #mail:hover {
+	        color: black;
+		background: rgb(251,255,0);
+	    }
+	    #mail:active {
+	        color: white;
+	        background: rgb(0,123,255);
+	    }
 	    .caption, .advisers, .schedule {
 	        margin-top: 25px;
 	    }
@@ -98,7 +113,7 @@
 			    <br /><a href="https://twitter.com/brimci" target="_blank">Twitter</a>
 			   -->
 			    <address>
-			        <strong>Email</strong>:  bjm277 [at] cornell [dot] edu
+		                <strong>Email</strong>:  <a id="mail" href="mailto:bjm277@cornell.edu">bjm277 [at] cornell [dot] edu</a>
 			    </address>
 			</div>
 			<div class="advisers">
